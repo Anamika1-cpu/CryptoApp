@@ -30,7 +30,7 @@ const Coins = () => {
     setPage(page);
     setLoading(true);
   };
-  const btns = new Array(25).fill(1);
+  const btns = new Array(132).fill(1);
   useEffect(() => {
     const fetchCoins = async () => {
       try {
@@ -76,7 +76,11 @@ const Coins = () => {
           </HStack>
           <HStack w={"full"} p={"8"} overflowX={"auto"}>
             {btns.map((item, index) => (
-              <Button bgColor={"blackAlpha.900"} onClick={() => changePage(2)}>
+              <Button
+                key={index}
+                bgColor={"blackAlpha.900"}
+                onClick={() => changePage(index + 1)}
+              >
                 {index + 1}
               </Button>
             ))}
