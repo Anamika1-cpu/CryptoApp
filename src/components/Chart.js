@@ -20,8 +20,13 @@ ChartJS.register(
   Legend
 );
 const Chart = ({ arr = [], currency, days }) => {
-  const prices = [1, 4, 3, 2];
-  const date = ["2/3/2013", "2/4/2013", "2/5/2013", "2/6/2013"];
+  const prices = [];
+  const date = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (days === "24h") date.push(new Date(arr[i][0]).toLocaleTimeString());
+    else date.push(new Date(arr[i][0]).toLocaleDateString());
+    prices.push(arr[i][1]);
+  }
   const data = {
     labels: date,
     datasets: [
