@@ -5,13 +5,28 @@ import { motion } from "framer-motion";
 const Home = () => {
   return (
     <Box w={"full"} objectFit={"contain"} bgColor={"blackAlpha.900"} h={"85vh"}>
-      <Image
-        w={"full"}
-        h={"full"}
-        filter={"grayscale(1)"}
-        objectFit={"contain"}
-        src={btcSrc}
-      />
+      <motion.div
+        style={{
+          height: "80vh",
+        }}
+        animate={{
+          translateY: "20px",
+        }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      >
+        <Image
+          w={"full"}
+          h={"full"}
+          filter={"grayscale(1)"}
+          objectFit={"contain"}
+          src={btcSrc}
+        />
+      </motion.div>
+
       <Text
         fontSize={"6xl"}
         textAlign={"center"}
