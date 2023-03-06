@@ -11,8 +11,6 @@ import {
 } from "@chakra-ui/react";
 import Loader from "./Loader";
 import ErrorComp from "./ErrorComp";
-import { Link } from "react-router-dom";
-// import ExchangeCard from "./ExchangeCard";
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +40,6 @@ const Exchanges = () => {
             {exchanges.map((exchange) => (
               <ExchangeCard
                 key={exchange.id}
-                id={exchange.id}
                 name={exchange.name}
                 image={exchange.image}
                 rank={exchange.trust_score_rank}
@@ -56,8 +53,8 @@ const Exchanges = () => {
   );
 };
 
-const ExchangeCard = ({ name, id, image, rank, url }) => (
-  <Link to={`/exchanges/${id}`} target={"blank"}>
+const ExchangeCard = ({ name, image, rank, url }) => (
+  <a href={url} target={"blank"}>
     <VStack
       w={"52"}
       shadow={"lg"}
@@ -71,12 +68,19 @@ const ExchangeCard = ({ name, id, image, rank, url }) => (
         },
       }}
     >
-      <Image src={image} w={"10"} h={"10"} objectFit='cover' alt={"Exchnage"} />
-      <Heading noOfLines={1} size={"md"}>
+      <Image
+        src={image}
+        w={"10"}
+        h={"10"}
+        objectFit={"contain"}
+        alt={"Exchange"}
+      />
+      <Heading size={"md"} noOfLines={1}>
         {rank}
       </Heading>
+
       <Text noOfLines={1}>{name}</Text>
     </VStack>
-  </Link>
+  </a>
 );
 export default Exchanges;
